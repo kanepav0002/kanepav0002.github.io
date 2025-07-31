@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
+    <title>Kane Pavlovich</title>
+    <style>
+        :root {
+            --primary-color: #e6f2ff; /* Light blue */
+            --secondary-color: #4a90e2;
+            --light-color: #f8f9fa;
+            --dark-color: #2c3e50;
+            --text-color: #333333;
+            --accent-color: #e74c3c;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            background-color: var(--primary-color);
+            padding: 2rem;
+            position: fixed;
+            height: 100vh;
+            width: 250px;
+            box-sizing: border-box;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        
+        .main-content {
+            grid-column: 2;
+            padding: 2rem;
+            margin-left: 250px;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            display: block;
+            border: 4px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: var(--dark-color);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: var(--dark-color);
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+        
+        .social-links {
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            color: var(--dark-color);
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .social-link:hover {
+            color: var(--secondary-color);
+            background-color: rgba(255,255,255,0.7);
+            font-weight: 600;
+        }
+        
+        .social-icon {
+            margin-right: 0.8rem;
+            font-size: 1.3rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 2.5rem;
+        }
+        
+        .nav-tab {
+            padding: 0.8rem 1.5rem;
+            margin-right: 0.5rem;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-tab:hover, .nav-tab.active {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .nav-tab.active:after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        h2 {
+            color: var(--dark-color);
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        h2:hover {
+            font-weight: 600;
+        }
+        
+        h3 {
+            color: var(--dark-color);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 2rem 0 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        h3:hover {
+            font-weight: 600;
+        }
+        
+        p, li {
+            font-weight: 300;
+            line-height: 1.7;
+        }
+        
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--dark-color);
+            text-decoration: underline;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                grid-column: 1;
+            }
+            
+            .nav-tabs {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <img src="Profile Image.PNG" alt="Your Name" class="profile-img">
+            <h1>Kane Pavlovich</h1>
+            <p class="subtitle">PhD (submitted), M.A., PgDip, B.A.</p>
+            
+            <div class="social-links">
+                <a href="https://github.com/kanepav0002" class="social-link" target="_blank">
+                    <span class="social-icon"><i class="fab fa-github"></i></span>
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/kane-pavlovich-4669b4196/" class="social-link" target="_blank">
+                    <span class="social-icon"><i class="fab fa-linkedin"></i></span>
+                    LinkedIn
+                </a>
+                <a href="https://scholar.google.com/citations?user=O-qY9v8AAAAJ&hl=en" class="social-link" target="_blank">
+                    <span class="social-icon"><i class="fas fa-graduation-cap"></i></span>
+                    Google Scholar
+                </a>
+                <a href="mailto:your.knpavlovich@gmail.com" class="social-link">
+                    <span class="social-icon"><i class="fas fa-envelope"></i></span>
+                    Email
+                </a>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="nav-tabs">
+                <a href="#about" class="nav-tab active">About</a>
+                <a href="#publications" class="nav-tab">Publications</a>
+                <a href="#projects" class="nav-tab">Kaggle Projects</a>
+            </div>
+            
+            <div id="about" class="content-section active">
+                <h2>About</h2>
+                <p>I am a PhD candidate with a recently submitted thesis (July 2025) in Computational Psychological Neuroscience from the <a href="https://www.monash.edu/medicine/psych/alex-fornito-lab/home" target="_blank">Neural Systems and Behaviour Lab</a> 
+                    under the supervision of <a href="https://research.monash.edu/en/persons/alex-fornito" target="_blank">Alex Fornito</a></p>
+                
+             <p>My research focused on enhancing the validity and reliability of brain-behavior predictive models by developing novel approaches to feature engineering in 
+                 both functional neural networks and latent behavioral spaces. Using a multidisciplinary toolkit including machine learning, network/graph theory, structural equation modeling, 
+                 and advanced statistical techniques (dimensionality reduction, time-series analysis, and spectral analysis), I established robust frameworks for high-dimensional prediction problems.</p>
+
+             <p>This work has given me  expertise in building interpretable predictive models where feature quality is paramount. I'm particularly passionate about 
+                 developing machine learning systems where engineered features (whether derived from domain knowledge, statistical transformations, or network representations)
+                 create the foundation for reliable inference.</p>
+
+            <p>With my PhD research completed, I'm now excited to apply my analytical expertise to data science/applied science roles. My experience transforming complex, 
+                noisy datasets into meaningful insights has given me both the technical skills and the problem-solving mindset to deliver impactful, data-driven solutions.
+                I'm particularly drawn to opportunities where rigorous computational methods can solve real-world challenges. My background in developing statistically robust 
+                models for neuroscience applications translates directly to business contexts where data quality and methodological soundness is paramount for reliable model inferences.</p>
+
+            <p>If my skills align with your team's needs, I'd welcome the chance to discuss how I could contribute to your projects. 
+                Please feel free to reach out via email or LinkedIn.</p>
+
+                <h3>Outside of Work</h3>
+            <p>Outside of working hours I am an avid music producer/DJ. I will often be found producing Brazilian Funk / Trance and other dance music, DJing my tracks in my front living room, 
+                or hosting a dinner party.</p>
+                
+                <h3>Programming Languages</h3>
+                <ul>
+                    <li>Python (pandas, numpy, scikit-learn, dbscan, seaborn, matplotlib)</li>
+                    <li>R (dplyr, tidyverse, lavaan, ggplo2)</li>
+                    <li>Matlab (network analysis, image processing, signal processing)</li>
+                    <li>SQL</li>
+                    <li>Linix/Unix/Bash</li>
+                </ul>
+            </div>
+            
+            <div id="publications" class="content-section">
+                <h2>Publications</h2>
+                <div class="publication">
+                    <h3>Journal Articles</h3>
+                    <ul>
+                        <li>
+                            <strong>Pavlovich, K.,</strong> Pang, J., Holmes, A., Constable, T., Fornito, A. (2025). The efficacy of resting-state fMRI denoising pipelines for motion correction and behavioural prediction. 
+                            <em>Imaging NeuroScience</em>, 
+                            <a href="https://doi.org/10.1162/IMAG.a.97">[DOI]</a>
+                        </li>
+                        <li>
+                            <strong>Pavlovich, K.,</strong> Tiego, J., Constable, T., Fornito, A. (2025). Assessing the Psychometric Properties of the Child Behavior Checklist in the ABCD Study. 
+                            <em>PsyArxiv [Preprint]</em>, 
+                            <a href="https://doi.org/10.31234/osf.io/k7yqz_v1">[DOI]</a>
+                        </li>
+                        <li>
+                            <strong>Pavlovich, K.,</strong> Pang, J., Fornito, A. (2025). The Motion Sensitivity and Predictive Utility of Different Estimates of Inter-regional Functional Coupling in Resting-state Functional MRI. 
+                            <em>BioRxiv [Preprint]</em>, 
+                            <a href="https://doi.org/10.1101/2025.07.13.664614">[DOI]</a>
+                        </li>
+                        <li>
+                            Constable, T., Fornito, A., <strong>Pavlovich, K.,</strong> Kotov, R., et al., (2025). The Effects of Trauma Type, Age of Onset, and Sex on Transdiagnostic Psychopathological Traits. 
+                            <em>PsyArxiv [Preprint]</em>, 
+                            <a href="https://doi.org/10.31234/osf.io/u5s2t_v2">[DOI]</a>
+                        </li>
+
+                    </ul>
+                    
+
+                </div>
+            </div>
+            
+            <div id="projects" class="content-section">
+                <h2>Kaggle Projects</h2>
+                <div class="project">
+                    <h3><a href="https://www.kaggle.com/yourprofile/project1" target="_blank">Project Title 1</a></h3>
+                    <p>Brief description of the project, methods used, and key findings.</p>
+                    <p><strong>Technologies:</strong> Python, TensorFlow, Pandas</p>
+                </div>
+                
+                <div class="project">
+                    <h3><a href="https://www.kaggle.com/yourprofile/project2" target="_blank">Project Title 2</a></h3>
+                    <p>Brief description of the project, methods used, and key findings.</p>
+                    <p><strong>Technologies:</strong> R, ggplot2, Statistical Modeling</p>
+                </div>
+                <!-- Add more projects as needed -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple tab switching functionality
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all tabs and sections
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Show corresponding section
+                const target = this.getAttribute('href');
+                document.querySelector(target).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
